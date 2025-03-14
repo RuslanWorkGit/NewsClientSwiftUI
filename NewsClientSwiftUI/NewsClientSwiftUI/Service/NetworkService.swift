@@ -12,7 +12,7 @@ protocol NetworkServiceProtocol {
 }
 
 
-class NetworkService {
+class NetworkService: NetworkServiceProtocol {
     
     func fetch<T: Decodable>(with url: URL, completion: @escaping (Result<T, Error>) -> Void) {
         var request = URLRequest(url: url)
