@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B86FACA2D80764500EA9884 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9B86FAC92D80764500EA9884 /* SnapKit */; };
-		9B86FACC2D80764500EA9884 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 9B86FACB2D80764500EA9884 /* SnapKit-Dynamic */; };
+		9BF87C892D83729D00C8F16B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF87C882D83729D00C8F16B /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B42CA922D79B92E00027EB9 /* NewsClientSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsClientSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BF87C712D83720E00C8F16B /* NewsClientSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsClientSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9B42CA942D79B92E00027EB9 /* NewsClientSwiftUI */ = {
+		9BF87C9A2D8372C000C8F16B /* NewsClientSwiftUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = NewsClientSwiftUI;
 			sourceTree = "<group>";
@@ -24,30 +23,29 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9B42CA8F2D79B92E00027EB9 /* Frameworks */ = {
+		9BF87C6E2D83720E00C8F16B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B86FACA2D80764500EA9884 /* SnapKit in Frameworks */,
-				9B86FACC2D80764500EA9884 /* SnapKit-Dynamic in Frameworks */,
+				9BF87C892D83729D00C8F16B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9B42CA892D79B92E00027EB9 = {
+		9BF87C682D83720D00C8F16B = {
 			isa = PBXGroup;
 			children = (
-				9B42CA942D79B92E00027EB9 /* NewsClientSwiftUI */,
-				9B42CA932D79B92E00027EB9 /* Products */,
+				9BF87C9A2D8372C000C8F16B /* NewsClientSwiftUI */,
+				9BF87C722D83720E00C8F16B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9B42CA932D79B92E00027EB9 /* Products */ = {
+		9BF87C722D83720E00C8F16B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B42CA922D79B92E00027EB9 /* NewsClientSwiftUI.app */,
+				9BF87C712D83720E00C8F16B /* NewsClientSwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,69 +53,68 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B42CA912D79B92E00027EB9 /* NewsClientSwiftUI */ = {
+		9BF87C702D83720E00C8F16B /* NewsClientSwiftUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B42CAA02D79B92F00027EB9 /* Build configuration list for PBXNativeTarget "NewsClientSwiftUI" */;
+			buildConfigurationList = 9BF87C7F2D83720F00C8F16B /* Build configuration list for PBXNativeTarget "NewsClientSwiftUI" */;
 			buildPhases = (
-				9B42CA8E2D79B92E00027EB9 /* Sources */,
-				9B42CA8F2D79B92E00027EB9 /* Frameworks */,
-				9B42CA902D79B92E00027EB9 /* Resources */,
+				9BF87C6D2D83720E00C8F16B /* Sources */,
+				9BF87C6E2D83720E00C8F16B /* Frameworks */,
+				9BF87C6F2D83720E00C8F16B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9B42CA942D79B92E00027EB9 /* NewsClientSwiftUI */,
+				9BF87C9A2D8372C000C8F16B /* NewsClientSwiftUI */,
 			);
 			name = NewsClientSwiftUI;
 			packageProductDependencies = (
-				9B86FAC92D80764500EA9884 /* SnapKit */,
-				9B86FACB2D80764500EA9884 /* SnapKit-Dynamic */,
+				9BF87C882D83729D00C8F16B /* SnapKit */,
 			);
 			productName = NewsClientSwiftUI;
-			productReference = 9B42CA922D79B92E00027EB9 /* NewsClientSwiftUI.app */;
+			productReference = 9BF87C712D83720E00C8F16B /* NewsClientSwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9B42CA8A2D79B92E00027EB9 /* Project object */ = {
+		9BF87C692D83720D00C8F16B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					9B42CA912D79B92E00027EB9 = {
+					9BF87C702D83720E00C8F16B = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 9B42CA8D2D79B92E00027EB9 /* Build configuration list for PBXProject "NewsClientSwiftUI" */;
+			buildConfigurationList = 9BF87C6C2D83720D00C8F16B /* Build configuration list for PBXProject "NewsClientSwiftUI" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 9B42CA892D79B92E00027EB9;
+			mainGroup = 9BF87C682D83720D00C8F16B;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				9BBC64222D8061C20027BF16 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9BF87C872D83729D00C8F16B /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 9B42CA932D79B92E00027EB9 /* Products */;
+			productRefGroup = 9BF87C722D83720E00C8F16B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B42CA912D79B92E00027EB9 /* NewsClientSwiftUI */,
+				9BF87C702D83720E00C8F16B /* NewsClientSwiftUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9B42CA902D79B92E00027EB9 /* Resources */ = {
+		9BF87C6F2D83720E00C8F16B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -127,7 +124,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9B42CA8E2D79B92E00027EB9 /* Sources */ = {
+		9BF87C6D2D83720E00C8F16B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -137,7 +134,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9B42CA9E2D79B92F00027EB9 /* Debug */ = {
+		9BF87C7D2D83720F00C8F16B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -200,7 +197,7 @@
 			};
 			name = Debug;
 		};
-		9B42CA9F2D79B92F00027EB9 /* Release */ = {
+		9BF87C7E2D83720F00C8F16B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -256,7 +253,7 @@
 			};
 			name = Release;
 		};
-		9B42CAA12D79B92F00027EB9 /* Debug */ = {
+		9BF87C802D83720F00C8F16B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -285,7 +282,7 @@
 			};
 			name = Debug;
 		};
-		9B42CAA22D79B92F00027EB9 /* Release */ = {
+		9BF87C812D83720F00C8F16B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -317,20 +314,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B42CA8D2D79B92E00027EB9 /* Build configuration list for PBXProject "NewsClientSwiftUI" */ = {
+		9BF87C6C2D83720D00C8F16B /* Build configuration list for PBXProject "NewsClientSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B42CA9E2D79B92F00027EB9 /* Debug */,
-				9B42CA9F2D79B92F00027EB9 /* Release */,
+				9BF87C7D2D83720F00C8F16B /* Debug */,
+				9BF87C7E2D83720F00C8F16B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B42CAA02D79B92F00027EB9 /* Build configuration list for PBXNativeTarget "NewsClientSwiftUI" */ = {
+		9BF87C7F2D83720F00C8F16B /* Build configuration list for PBXNativeTarget "NewsClientSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B42CAA12D79B92F00027EB9 /* Debug */,
-				9B42CAA22D79B92F00027EB9 /* Release */,
+				9BF87C802D83720F00C8F16B /* Debug */,
+				9BF87C812D83720F00C8F16B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -338,7 +335,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9BBC64222D8061C20027BF16 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		9BF87C872D83729D00C8F16B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -349,17 +346,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9B86FAC92D80764500EA9884 /* SnapKit */ = {
+		9BF87C882D83729D00C8F16B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BBC64222D8061C20027BF16 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 9BF87C872D83729D00C8F16B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		9B86FACB2D80764500EA9884 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9BBC64222D8061C20027BF16 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 9B42CA8A2D79B92E00027EB9 /* Project object */;
+	rootObject = 9BF87C692D83720D00C8F16B /* Project object */;
 }
