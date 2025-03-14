@@ -2,7 +2,7 @@
 //  NewsClientSwiftUIApp.swift
 //  NewsClientSwiftUI
 //
-//  Created by Ruslan Liulka on 06.03.2025.
+//  Created by Ruslan Liulka on 13.03.2025.
 //
 
 import SwiftUI

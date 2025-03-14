@@ -2,18 +2,29 @@
 //  ContentView.swift
 //  NewsClientSwiftUI
 //
-//  Created by Ruslan Liulka on 06.03.2025.
+//  Created by Ruslan Liulka on 13.03.2025.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            Tab("Home", systemImage: "house") {
+                MainView()
+            }
+            .badge(2)
+            
+            Tab("Search", systemImage: "magnifyingglass") {
+                SearchView()
+            }
+            
+            
+            Tab("Setting", systemImage: "gear") {
+                SettingView()
+            }
+            
+            
         }
         .padding()
     }
