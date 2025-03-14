@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @StateObject private var viewModel = MainViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(viewModel.newsRequest?.articles ?? [], id: \.title) { article in
+            
+            HStack {
+                Image("basicNews")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                    .clipShape(.buttonBorder)
+                Text(article.title)
+            }
+            
+            
+        }
+        .onAppear {
+            viewModel.fetch()
+        }
     }
 }
 

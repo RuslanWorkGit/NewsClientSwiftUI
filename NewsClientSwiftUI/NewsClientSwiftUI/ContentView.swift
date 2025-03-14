@@ -13,14 +13,18 @@ struct ContentView: View {
             Tab("Home", systemImage: "house") {
                 MainView()
             }
+            .badge(2)
             
             Tab("Search", systemImage: "magnifyingglass") {
                 SearchView()
             }
             
+            
             Tab("Setting", systemImage: "gear") {
                 SettingView()
             }
+            
+            
         }
         .padding()
     }
