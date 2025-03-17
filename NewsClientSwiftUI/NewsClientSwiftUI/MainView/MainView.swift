@@ -38,31 +38,7 @@ struct MainView: View {
                 }
                 .padding(.horizontal)
                 
-                List(viewModel.newsRequest?.articles ?? [], id: \.title) { article in
-                    
-                    HStack {
-                        
-                        if let urlString = article.urlToImage, let url = URL(string: urlString) {
-                            WebImage(url: URL(string: article.urlToImage ?? ""))
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 80, height: 80)
-                                .clipped()
-                                .clipShape(.buttonBorder)
-                                
-                        } else {
-                            Image("basicNews")
-                                .resizable()
-                                .frame(width: 80, height: 80)
-                                .clipShape(.buttonBorder)
-                        }
-
-                        Text(article.title)
-                        
-                    }
-                    
-                    
-                }
+                NewsList(articles: viewModel.newsRequest?.articles ?? [])
                 .onAppear {
                     viewModel.fetch(category: selectedCategory)
                 }

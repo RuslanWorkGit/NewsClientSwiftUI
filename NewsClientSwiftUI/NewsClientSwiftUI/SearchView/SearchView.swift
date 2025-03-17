@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    @StateObject private var viewModel = SearchViewModel()
+    @State private var searchText: String = ""
+    
     var body: some View {
-        Text("Hello search")
+        TextField("Search", text: $searchText)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+            .onSubmit {
+                viewModel.fetchSearch(search: searchText)
+            }
+            
     }
 }
 

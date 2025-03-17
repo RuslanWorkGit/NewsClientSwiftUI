@@ -26,7 +26,7 @@ struct ApiLink {
     private let mainLink = "https://newsapi.org"
     private let apiKey = "37beefb7966b4f568c9f18718ca7b11d"
     
-    func bildUrl(endpoints: EndPoints, category: Category? = nil) -> URL? {
+    func bildUrl(endpoints: EndPoints, category: Category? = nil, search: String? = nil) -> URL? {
         
         let fullLink = mainLink + endpoints.rawValue
         var components = URLComponents(string: fullLink)
@@ -34,6 +34,10 @@ struct ApiLink {
         
         if let addCategory = category?.rawValue {
             queryItems.append(URLQueryItem(name: "category", value: addCategory))
+        }
+        
+        if let addSearch = search {
+            queryItems.append(URLQueryItem(name: "q", value: search))
         }
         
         queryItems.append(URLQueryItem(name: "apiKey", value: apiKey))
