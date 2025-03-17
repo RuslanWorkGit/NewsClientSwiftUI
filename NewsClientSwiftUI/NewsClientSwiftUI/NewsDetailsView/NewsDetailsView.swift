@@ -9,9 +9,13 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct NewsDetailsView: View {
+    
+    @StateObject private var viewModel = NewsDetailsViewModel()
+    @State private var isFavorite: Bool = false
     var article: Articles
     
     var body: some View {
+        
         ScrollView {
             VStack {
                 
@@ -45,6 +49,33 @@ struct NewsDetailsView: View {
                         .foregroundStyle(Color.blue)
                 }
                 
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    isFavorite.toggle()
+                    
+                    if isFavorite {
+                        print("save")
+                    } else {
+                        print("Remover from save")
+                    }
+                    
+                    
+                } label: {
+                    
+                    if isFavorite {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(Color.yellow)
+                    } else {
+                        Image(systemName: "star")
+                            .foregroundStyle(Color.yellow)
+                    }
+                    
+                        
+                }
+
             }
         }
     }
