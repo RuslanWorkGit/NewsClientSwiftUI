@@ -26,7 +26,7 @@ struct MainView: View {
                                 viewModel.fetch(category: selectedCategory)
                             } label: {
                                 Text(category.rawValue)
-                                    .padding()
+                                    .padding(10)
                                     .background(selectedCategory == category ? Color.blue : Color.gray.opacity(0.2))
                                     .foregroundStyle(selectedCategory == category ? Color.white : Color.black)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
