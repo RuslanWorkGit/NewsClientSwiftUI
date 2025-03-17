@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct MainView: View {
     
     @StateObject private var viewModel = MainViewModel()
+    @State private var selectedCategory: Category = .general
     
     var body: some View {
         
@@ -20,11 +21,17 @@ struct MainView: View {
                     LazyHGrid(rows: [GridItem(.flexible())], content: {
                         ForEach(Category.allCases, id: \.self) { category in
                             
-                            Text(category.rawValue)
-                                .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                        
+                            Button {
+                                selectedCategory = category
+                                viewModel.fetch(category: selectedCategory)
+                            } label: {
+                                Text(category.rawValue)
+                                    .padding()
+                                    .background(selectedCategory == category ? Color.blue : Color.gray.opacity(0.2))
+                                    .foregroundStyle(selectedCategory == category ? Color.white : Color.black)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+
                         }
                     })
                     .frame(height: 50)
@@ -35,24 +42,21 @@ struct MainView: View {
                     
                     HStack {
                         
-                        if let url = URL(string: article.urlToImage ?? "") {
+                        if let urlString = article.urlToImage, let url = URL(string: urlString) {
                             WebImage(url: URL(string: article.urlToImage ?? ""))
                                 .resizable()
+                                .aspectRatio(contentMode: .fill)
                                 .frame(width: 80, height: 80)
+                                .clipped()
                                 .clipShape(.buttonBorder)
+                                
                         } else {
                             Image("basicNews")
                                 .resizable()
                                 .frame(width: 80, height: 80)
                                 .clipShape(.buttonBorder)
                         }
-                        
-                        
-                        
-        //                Image("basicNews")
-        //                    .resizable()
-        //                    .frame(width: 80, height: 80)
-        //                    .clipShape(.buttonBorder)
+
                         Text(article.title)
                         
                     }
@@ -60,8 +64,11 @@ struct MainView: View {
                     
                 }
                 .onAppear {
-                    viewModel.fetch()
+                    viewModel.fetch(category: selectedCategory)
                 }
+                .navigationTitle("Home")
+                .navigationBarTitleDisplayMode(.inline)
+                
             }
         }
         

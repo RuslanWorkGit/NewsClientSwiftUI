@@ -18,8 +18,8 @@ class MainViewModel: ObservableObject {
         self.networkService = networkService
     }
     
-    func fetch() {
-        guard let url = apiLink.bildUrl(endpoints: .topHeadLines, category: .general) else {
+    func fetch(category: Category) {
+        guard let url = apiLink.bildUrl(endpoints: .topHeadLines, category: category) else {
             print("wrong link")
             return
         }
