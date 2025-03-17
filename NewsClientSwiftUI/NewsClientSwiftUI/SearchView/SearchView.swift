@@ -13,12 +13,19 @@ struct SearchView: View {
     @State private var searchText: String = ""
     
     var body: some View {
-        TextField("Search", text: $searchText)
-            .textFieldStyle(.roundedBorder)
-            .padding()
-            .onSubmit {
-                viewModel.fetchSearch(search: searchText)
+        NavigationView {
+            VStack {
+                TextField("Search", text: $searchText)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                    .onSubmit {
+                        viewModel.fetchSearch(search: searchText)
+                    }
+                
+                NewsList(articles: viewModel.searchNews?.articles ?? [])
             }
+        }
+        
             
     }
 }
