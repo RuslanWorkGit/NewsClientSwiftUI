@@ -44,7 +44,7 @@ struct NewsDetailsView: View {
                 Text(article.publishedAt)
                 
                 if let url = URL(string: article.url) {
-                    Link("Read more", destination: url)
+                    Link(article.url, destination: url)
                         .font(.headline)
                         .foregroundStyle(Color.blue)
                 }

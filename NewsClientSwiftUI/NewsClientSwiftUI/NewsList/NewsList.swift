@@ -31,12 +31,27 @@ struct NewsList: View {
                             .clipShape(.buttonBorder)
                     }
                     
-                    Text(article.title)
+                    VStack {
+                        Text(article.title)
+                        
+                        Text(dataFormater(article.publishedAt))
+                    }
+                    
+                        
                 }
             }
 
         }
 
+    }
+    
+    func dataFormater(_ dataString: String) -> String {
+        let isoFormatter = ISO8601DateFormatter()
+        guard let data = isoFormatter.date(from: dataString) else { return dataString }
+        
+        let displayFormatter = DateFormatter()
+        displayFormatter.dateFormat = "yyyy.MM.dd HH:mm"
+        return displayFormatter.string(from: data)
     }
 }
 
