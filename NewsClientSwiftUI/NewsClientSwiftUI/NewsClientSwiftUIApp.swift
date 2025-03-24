@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct NewsClientSwiftUIApp: App {
@@ -13,5 +14,6 @@ struct NewsClientSwiftUIApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: SDNewsModel.self)
     }
 }

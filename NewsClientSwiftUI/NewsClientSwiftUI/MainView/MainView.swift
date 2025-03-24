@@ -38,12 +38,25 @@ struct MainView: View {
                 }
                 .padding(.horizontal)
                 
-                NewsList(articles: viewModel.newsRequest?.articles ?? [])
-                .onAppear {
-                    viewModel.fetch(category: selectedCategory)
+                if viewModel.savedNews.isEmpty {
+                    NewsList(articles: viewModel.newsRequest?.articles ?? [])
+                        .onAppear {
+                            //viewModel.getAllArticles()
+                            viewModel.fetch(category: selectedCategory)
+                        }
+//                        .navigationTitle("Home")
+//                        .navigationBarTitleDisplayMode(.inline)
+                    
+                } else {
+                    SavedNewsList(savedArticles: viewModel.savedNews)
+                        .onAppear {
+                            //viewModel.getAllArticles()
+                            viewModel.fetch(category: selectedCategory)
+                        }
+                        .navigationTitle("Home")
+                        .navigationBarTitleDisplayMode(.inline)
                 }
-                .navigationTitle("Home")
-                .navigationBarTitleDisplayMode(.inline)
+                
                 
             }
         }

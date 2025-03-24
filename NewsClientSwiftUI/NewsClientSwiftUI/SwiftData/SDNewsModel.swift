@@ -19,9 +19,10 @@ class SDNewsModel {
     var publishedAt: String
     var url: String
     var image: Data
+    var category: String
     
     
-    init(title: String, author: String, name: String, descriptionLabel: String, content: String, publishedAt: String, url: String, image: Data) {
+    init(title: String, author: String, name: String, descriptionLabel: String, content: String, publishedAt: String, url: String, image: Data, category: String) {
         self.title = title
         self.author = author
         self.name = name
@@ -30,5 +31,6 @@ class SDNewsModel {
         self.publishedAt = publishedAt
         self.url = url
         self.image = image
+        self.category = category
     }
 }
