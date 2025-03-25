@@ -25,7 +25,7 @@ struct SavedNewsDetailsView: View {
                 
 
                 
-                if let image = UIImage(data: savedArticle.image) {
+                if let dataImage = savedArticle.image, let image = UIImage(data: dataImage) {
                     Image(uiImage: image)
                 } else {
                     Image("basicNews")

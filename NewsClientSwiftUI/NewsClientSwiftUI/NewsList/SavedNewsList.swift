@@ -14,13 +14,15 @@ struct SavedNewsList: View {
         List(savedArticles, id: \.url) { article in
             NavigationLink(destination: SavedNewsDetailsView(savedArticle: article)) {
                 HStack {
-                    if let image = UIImage(data: article.image) {
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 80, height: 80)
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    if let imageData = article.image {
+                        if let image = UIImage(data: imageData) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 80, height: 80)
+                                .clipped()
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                        } 
                     } else {
                         Image("basicNews")
                             .resizable()

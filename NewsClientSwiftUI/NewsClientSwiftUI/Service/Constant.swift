@@ -37,7 +37,7 @@ struct ApiLink {
         }
         
         if let addSearch = search {
-            queryItems.append(URLQueryItem(name: "q", value: search))
+            queryItems.append(URLQueryItem(name: "q", value: addSearch))
         }
         
         queryItems.append(URLQueryItem(name: "apiKey", value: apiKey))

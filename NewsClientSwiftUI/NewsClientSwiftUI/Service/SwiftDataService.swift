@@ -12,34 +12,33 @@ import SwiftData
 class SwiftDataService {
     
     static let shared = SwiftDataService()
-    
-    private let modelContainer: ModelContainer?
-    private var modelContext: ModelContext?
+//    
+//    let modelContainer: ModelContainer
+    //private var modelContext: ModelContext?
     
     private init() {
-        modelContainer = try? ModelContainer(for: Schema([SDNewsModel.self]))
-        modelContext = modelContainer?.mainContext
+//        let schema = Schema([SDNewsModel.self])
+//        modelContainer = try! ModelContainer(for: schema)
+        //modelContext = modelContainer?.mainContext
     }
     
-    func addArticle(article: SDNewsModel) {
-        modelContext?.insert(article)
+    func addArticle(article: SDNewsModel, modelContext: ModelContext) {
+//        guard let modelContext else {
+//            print("ModelContext ADD!!!!")
+//            return
+//        }
+        modelContext.insert(article)
+
     }
     
-//    func fetchAllArticles(url: String) -> SDNewsModel? {
-//        guard let modelContext else { return nil }
-//        
-//        let predicator = #Predicate<SDNewsModel> { $0.url == url}
-//        let decriptor = FetchDescriptor<SDNewsModel>(predicate: predicator)
-//        
-//        let results = try? modelContext.fetch(decriptor).first
-//        return results
-//    }
-    
-    func fetchArticle(category: String) -> [SDNewsModel] {
-        guard let modelContext else { return [] }
+    func fetchArticle(categorys: String, modelContext: ModelContext) -> [SDNewsModel] {
+//        guard let modelContext else {
+//            print("ModelContext!!!")
+//            return []
+//        }
         
-        let predicator = #Predicate<SDNewsModel> { $0.category == category}
-        let descriptor = FetchDescriptor<SDNewsModel>(predicate: predicator, sortBy: [SortDescriptor(\.publishedAt, order: .reverse)])
+        let predicate = #Predicate<SDNewsModel> { $0.category == categorys }
+        let descriptor = FetchDescriptor<SDNewsModel>(predicate: predicate, sortBy: [SortDescriptor(\.publishedAt, order: .reverse)])
         
         do {
             let results = try modelContext.fetch(descriptor)
@@ -50,8 +49,25 @@ class SwiftDataService {
         }
     }
     
-    func existsArticle(with url: String) -> Bool {
-        guard let modelContext else { return false}
+    func fetchArticleUrl(with url: String, context: ModelContext) -> SDNewsModel? {
+        let predicate = #Predicate<SDNewsModel> { $0.url == url}
+        let descriptor = FetchDescriptor<SDNewsModel>(predicate: predicate)
+        
+        do {
+            return try context.fetch(descriptor).first
+
+        } catch {
+            print("Error fetch by URL")
+            return nil
+        }
+        
+    }
+    
+    func existsArticle(with url: String, modelContext: ModelContext) -> Bool {
+//        guard let modelContext else {
+//            print("ModelContext!!!")
+//            return false
+//        }
         
         let predicator = #Predicate<SDNewsModel> { $0.url == url }
         let fetchDescriptor = FetchDescriptor<SDNewsModel>(predicate: predicator)
@@ -65,8 +81,8 @@ class SwiftDataService {
         }
     }
     
-    func deleteAll() {
-        guard let modelContext else { return }
+    func deleteAll(modelContext: ModelContext) {
+//        guard let modelContext else { return }
         
         let descriptor = FetchDescriptor<SDNewsModel>()
         

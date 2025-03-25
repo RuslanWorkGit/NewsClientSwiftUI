@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct MainView: View {
     
-    @StateObject private var viewModel = MainViewModel()
+    @StateObject var viewModel: MainViewModel
     @State private var selectedCategory: Category = .general
     
     var body: some View {
@@ -37,38 +37,32 @@ struct MainView: View {
                     .frame(height: 50)
                 }
                 .padding(.horizontal)
-                
-                if viewModel.savedNews.isEmpty {
-                    NewsList(articles: viewModel.newsRequest?.articles ?? [])
-                        .onAppear {
-                            //viewModel.getAllArticles()
-                            viewModel.fetch(category: selectedCategory)
-                        }
-//                        .navigationTitle("Home")
-//                        .navigationBarTitleDisplayMode(.inline)
-                    
-                } else {
-                    SavedNewsList(savedArticles: viewModel.savedNews)
-                        .onAppear {
-                            //viewModel.getAllArticles()
-                            viewModel.fetch(category: selectedCategory)
-                        }
-                        .navigationTitle("Home")
-                        .navigationBarTitleDisplayMode(.inline)
-                }
-                
-                
+  
+//                NewsList(articles: viewModel.newsRequest?.articles ?? [])
+//                    .onAppear {
+//                        viewModel.fetch(category: selectedCategory)
+//                    }
+//                    .navigationTitle("Home")
+//                    .navigationBarTitleDisplayMode(.inline)
+                SavedNewsList(savedArticles: viewModel.savedNews)
+                    .onAppear{
+                        viewModel.fetch(category: selectedCategory)
+                    }
+//                SavedNewsList(savedArticles: viewModel.savedNews)
+//                    .onAppear {
+//                        Task {
+//                            await viewModel.fetchAsync(category: selectedCategory)
+//                        }
+//                    }
+//                    .navigationTitle("Home")
+//                    .navigationBarTitleDisplayMode(.inline)
+ 
             }
         }
-        
-        
-        
-        
-        
 
     }
 }
 
 #Preview {
-    MainView()
+    //MainView()
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol NetworkServiceProtocol {
     func fetch<T: Decodable>(with url: URL, completion: @escaping (Result<T, Error>) -> Void)
+    func fetchAsync<T: Decodable>(with url: URL) async throws -> T
 }
 
 
@@ -44,5 +45,13 @@ class NetworkService: NetworkServiceProtocol {
                 print("Error decode data: \(error.localizedDescription)")
             }
         }.resume()
+    }
+    
+    func fetchAsync<T: Decodable>(with url: URL) async throws -> T  {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return try JSONDecoder().decode(T.self, from: data)
     }
 }
