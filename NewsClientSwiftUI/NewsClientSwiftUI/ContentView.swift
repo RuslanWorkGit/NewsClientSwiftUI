@@ -14,7 +14,6 @@ struct ContentView: View {
     var body: some View {
         TabView {
             Tab("Home", systemImage: "house") {
-                //MainView(viewModel: MainViewModel(context: context))
                 MainView(viewModel: MainViewModel(context: context))
             }
             .badge(2)

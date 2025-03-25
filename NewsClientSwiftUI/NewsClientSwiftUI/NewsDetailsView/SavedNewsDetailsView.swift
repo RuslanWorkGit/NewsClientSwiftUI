@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SavedNewsDetailsView: View {
     
-    //@StateObject private var viewModel = NewsDetailsViewModel()
+    @StateObject var viewModel: SavedNewsDetailsViewModel
     @State private var isFavorite: Bool = false
     var savedArticle: SDNewsModel
     
@@ -27,8 +27,14 @@ struct SavedNewsDetailsView: View {
                 
                 if let dataImage = savedArticle.image, let image = UIImage(data: dataImage) {
                     Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
                 } else {
                     Image("basicNews")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
                 }
                 
                 HStack {
@@ -51,15 +57,23 @@ struct SavedNewsDetailsView: View {
                 
             }
         }
+        .onAppear{
+            isFavorite = viewModel.chechIfSaved(article: savedArticle)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    isFavorite.toggle()
+                    //isFavorite = viewModel.chechIfSaved(article: savedArticle)
                     
                     if isFavorite {
-                        print("save")
-                    } else {
                         print("Remover from save")
+                        viewModel.delete(article: savedArticle)
+                        isFavorite = false
+                        
+                    } else {
+                        print("save")
+                        viewModel.save(article: savedArticle)
+                        isFavorite = true
                     }
                     
                     
@@ -79,8 +93,9 @@ struct SavedNewsDetailsView: View {
             }
         }
     }
+
 }
 
 #Preview {
-    SavedNewsDetailsView(savedArticle: SDNewsModel(title: "One", author: "One", name: "One", descriptionLabel: "One", content: "One", publishedAt: "One", url: "One", image: Data(), category: "general"))
+    //SavedNewsDetailsView(savedArticle: SDNewsModel(title: "One", author: "One", name: "One", descriptionLabel: "One", content: "One", publishedAt: "One", url: "One", image: Data(), category: "general"))
 }

@@ -56,13 +56,6 @@ class MainViewModel: ObservableObject {
                 }
                 
                 
-//                for article in success.articles {
-//                    if let oneNews = swiftDataService.fetchArticleUrl(with: article.url, context: context){
-//                        savedNews.append(oneNews)
-//                    }
-//                        
-//                }
-                
                 
                 
             case .failure(let failure):

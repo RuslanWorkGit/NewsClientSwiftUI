@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct SavedNewsList: View {
+    @Environment(\.modelContext) private var context
     let savedArticles: [SDNewsModel]
     
     var body: some View {
         List(savedArticles, id: \.url) { article in
-            NavigationLink(destination: SavedNewsDetailsView(savedArticle: article)) {
+            NavigationLink(destination: SavedNewsDetailsView(viewModel: SavedNewsDetailsViewModel(context: context), savedArticle: article)) {
                 HStack {
                     if let imageData = article.image {
                         if let image = UIImage(data: imageData) {
