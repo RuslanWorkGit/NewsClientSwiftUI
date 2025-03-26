@@ -52,6 +52,25 @@ struct MainView: View {
                     }
                 }
             }
+
+            .navigationBarTitleDisplayMode(.inline)
+
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Spacer()
+                        Text("Home")
+                            .font(.headline)
+                        Spacer()
+                        Button {
+                            viewModel.fetch(category: selectedCategory)
+                        } label: {
+                            Image(systemName: "arrow.trianglehead.2.clockwise")
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+            }
         }
         .onAppear {
             if viewModel.savedNews.isEmpty {
@@ -65,21 +84,10 @@ struct MainView: View {
                 }
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    viewModel.fetch(category: selectedCategory)
-                }
-                label: {
-                    Image(systemName: "arrow.trianglehead.2.clockwise")
-                }
-            }
-            
-            ToolbarItem(placement: .automatic) {
-                Text("Home")
-            }
-        }
+        
     }
+
+
 }
         
 
