@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct NewsDetailsView: View {
     
-    @StateObject private var viewModel = NewsDetailsViewModel()
+    @StateObject var viewModel: NewsDetailsViewModel
     @State private var isFavorite: Bool = false
     var article: Articles
     
@@ -51,15 +51,19 @@ struct NewsDetailsView: View {
                 
             }
         }
+        .onAppear {
+            isFavorite = viewModel.checkIsSavedInSD(article: article)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    isFavorite.toggle()
                     
                     if isFavorite {
-                        print("save")
+                        viewModel.deleteFromSD(article: article)
+                        isFavorite = false
                     } else {
-                        print("Remover from save")
+                        viewModel.saveToSD(article: article)
+                        isFavorite = true
                     }
                     
                     
@@ -81,6 +85,6 @@ struct NewsDetailsView: View {
     }
 }
 
-#Preview {
-    NewsDetailsView(article: Articles(source: Source(id: "", name: "One"), title: "One", url: "One", publishedAt: "One"))
-}
+//#Preview {
+//    NewsDetailsView(article: Articles(source: Source(id: "", name: "One"), title: "One", url: "One", publishedAt: "One"))
+//}

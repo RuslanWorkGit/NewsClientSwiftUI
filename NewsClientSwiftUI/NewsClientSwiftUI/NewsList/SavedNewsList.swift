@@ -11,34 +11,45 @@ struct SavedNewsList: View {
     @Environment(\.modelContext) private var context
     let savedArticles: [SDNewsModel]
     
+    @State private var dispalayCount: Int = 20
+    
     var body: some View {
-        List(savedArticles, id: \.url) { article in
-            NavigationLink(destination: SavedNewsDetailsView(viewModel: SavedNewsDetailsViewModel(context: context), savedArticle: article)) {
-                HStack {
-                    if let imageData = article.image {
-                        if let image = UIImage(data: imageData) {
-                            Image(uiImage: image)
+        List {
+            ForEach(Array(savedArticles.prefix(dispalayCount).enumerated()), id: \.element.url) { index, article in
+                NavigationLink(destination: SavedNewsDetailsView(viewModel: SavedNewsDetailsViewModel(context: context), savedArticle: article)) {
+                    HStack {
+                        if let imageData = article.image {
+                            if let image = UIImage(data: imageData) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 80, height: 80)
+                                    .clipped()
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                            }
+                        } else {
+                            Image("basicNews")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 80, height: 80)
                                 .clipped()
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                        } 
-                    } else {
-                        Image("basicNews")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 80, height: 80)
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                    }
-                    
-                    VStack {
-                        Text(article.title)
+                        }
                         
-                        Text("\(dataFormater(article.publishedAt)) S")
+                        VStack {
+                            Text(article.title)
+                            
+                            Text("\(dataFormater(article.publishedAt)) S")
+                        }
                     }
                 }
+                .onAppear {
+                    if index == dispalayCount - 1 && dispalayCount < savedArticles.count {
+                        dispalayCount += 20
+                    }
+                    
+                }
+                
             }
         }
     }

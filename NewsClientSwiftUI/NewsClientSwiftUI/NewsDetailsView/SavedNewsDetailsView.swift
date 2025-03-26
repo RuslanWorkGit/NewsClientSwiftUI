@@ -57,13 +57,13 @@ struct SavedNewsDetailsView: View {
                 
             }
         }
+        .navigationTitle("Details")
         .onAppear{
             isFavorite = viewModel.chechIfSaved(article: savedArticle)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    //isFavorite = viewModel.chechIfSaved(article: savedArticle)
                     
                     if isFavorite {
                         print("Remover from save")
@@ -96,6 +96,3 @@ struct SavedNewsDetailsView: View {
 
 }
 
-#Preview {
-    //SavedNewsDetailsView(savedArticle: SDNewsModel(title: "One", author: "One", name: "One", descriptionLabel: "One", content: "One", publishedAt: "One", url: "One", image: Data(), category: "general"))
-}

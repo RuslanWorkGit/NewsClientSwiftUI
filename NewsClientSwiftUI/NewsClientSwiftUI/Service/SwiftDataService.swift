@@ -81,6 +81,20 @@ class SwiftDataService {
         }
     }
     
+    func fetchFavoritesNews(isFavorite: Bool, modelContext: ModelContext) -> [SDNewsModel] {
+        
+        let predicate = #Predicate<SDNewsModel> { $0.isFavorite == isFavorite }
+        let descriptor = FetchDescriptor<SDNewsModel>(predicate: predicate)
+        
+        do {
+            let results = try modelContext.fetch(descriptor)
+            return results
+        } catch {
+            print("Error fetch favoriets news")
+            return []
+        }
+    }
+    
     func deleteAll(modelContext: ModelContext) {
 //        guard let modelContext else { return }
         
