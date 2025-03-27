@@ -47,3 +47,29 @@ struct ApiLink {
         
     }
 }
+
+func dowloadImage(from imageStringUrl: String) -> Data? {
+    
+    var imageData: Data?
+    
+    guard let url = URL(string: imageStringUrl) else {
+        print("Wrong link!")
+        return nil
+    }
+    
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        
+        if let responseError = error {
+            print("Error: \(responseError)")
+        }
+        
+        guard let responseData = data else {
+            print("Wrong data")
+            return
+        }
+
+        imageData = responseData
+    }
+    
+    return imageData
+}

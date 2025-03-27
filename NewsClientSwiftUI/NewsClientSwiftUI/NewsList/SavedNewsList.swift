@@ -16,7 +16,8 @@ struct SavedNewsList: View {
     var body: some View {
         List {
             ForEach(Array(savedArticles.prefix(dispalayCount).enumerated()), id: \.element.url) { index, article in
-                NavigationLink(destination: SavedNewsDetailsView(viewModel: SavedNewsDetailsViewModel(context: context), savedArticle: article)) {
+               /* NavigationLink(destination: SavedNewsDetailsView(viewModel: SavedNewsDetailsViewModel(context: context), savedArticle: article))*/
+                NavigationLink(destination: NewsDetailsViewGeneric(viewModel: NewsDetailsGenericViewModel(context: context), article: article)) {
                     HStack {
                         if let imageData = article.image {
                             if let image = UIImage(data: imageData) {
