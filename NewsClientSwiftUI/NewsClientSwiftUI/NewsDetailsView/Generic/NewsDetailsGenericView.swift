@@ -1,54 +1,50 @@
 //
-//  NewsDetailsView.swift
+//  NewsDetailsViewGeneric.swift
 //  NewsClientSwiftUI
 //
-//  Created by Ruslan Liulka on 17.03.2025.
+//  Created by Ruslan Liulka on 27.03.2025.
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
-struct NewsDetailsView: View {
+struct NewsDetailsGenericView<T: NewsDetailsDisplay>: View {
     
-    @StateObject var viewModel: NewsDetailsViewModel
+    @StateObject var viewModel: NewsDetailsGenericViewModel
     @State private var isFavorite: Bool = false
-    var article: Articles
+    var article: T
     
     var body: some View {
-        
         ScrollView {
             VStack {
-                
-                Text(article.title)
+                Text(article.titleDetails)
                     .font(.title)
                     .fontWeight(.bold)
                 
-                if let urlString = article.urlToImage, let url = URL(string: urlString) {
-                    WebImage(url: url)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } else {
-                    Image("basicNews")
-                }
+//                if let dataImage = article.imageDetails, let uiImage = UIImage(data: dataImage) {
+//                    Image(uiImage: uiImage)
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                } else {
+//                    Image("basicNews")
+//                }
                 
                 HStack {
-                    Text(article.source.name)
+                    Text(article.nameDetails)
                     
                     Spacer()
                     
-                    Text(article.author ?? "No Author")
+                    Text(article.authorDetails)
                 }
-                .padding()
                 
-                Text(article.description ?? "No decription")
-                Text(article.publishedAt)
+                Text(article.descriptionDetails)
+                Text(article.contentDetails)
+                Text(article.publishedAtDetailsc)
                 
-                if let url = URL(string: article.url) {
-                    Link(article.url, destination: url)
+                if let url = URL(string: article.urlDetails) {
+                    Link(article.urlDetails, destination: url)
                         .font(.headline)
                         .foregroundStyle(Color.blue)
                 }
-                
             }
         }
         .onAppear {
@@ -56,8 +52,8 @@ struct NewsDetailsView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
+                
                 Button {
-                    
                     if isFavorite {
                         viewModel.deleteFromSD(article: article)
                         isFavorite = false
@@ -65,10 +61,7 @@ struct NewsDetailsView: View {
                         viewModel.saveToSD(article: article)
                         isFavorite = true
                     }
-                    
-                    
                 } label: {
-                    
                     if isFavorite {
                         Image(systemName: "star.fill")
                             .foregroundStyle(Color.yellow)
@@ -76,15 +69,9 @@ struct NewsDetailsView: View {
                         Image(systemName: "star")
                             .foregroundStyle(Color.yellow)
                     }
-                    
-                        
                 }
 
             }
         }
     }
 }
-
-//#Preview {
-//    NewsDetailsView(article: Articles(source: Source(id: "", name: "One"), title: "One", url: "One", publishedAt: "One"))
-//}

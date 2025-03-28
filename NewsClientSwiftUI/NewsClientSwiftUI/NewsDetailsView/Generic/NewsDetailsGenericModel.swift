@@ -11,7 +11,7 @@ protocol NewsDetailsDisplay {
     var authorDetails: String { get }
     var publishedAtDetailsc: String { get }
     var contentDetails: String { get }
-    var imageDetails: Data? { get }
+    var imageDetails: String? { get }
     var nameDetails: String { get }
     var urlDetails: String { get }
     var descriptionDetails: String { get }
@@ -35,10 +35,8 @@ extension Articles: NewsDetailsDisplay {
         return content ?? ""
     }
     
-    var imageDetails: Data? {
-        guard let urlToImage else { return nil }
-        
-        return dowloadImage(from: urlToImage)
+    var imageDetails: String? {
+        return urlToImage
     }
     
     var nameDetails: String {
@@ -55,38 +53,38 @@ extension Articles: NewsDetailsDisplay {
     
 }
 
-extension SDNewsModel: NewsDetailsDisplay {
-    var titleDetails: String {
-        return title
-    }
-    
-    var authorDetails: String {
-        return author
-    }
-    
-    var publishedAtDetailsc: String {
-        return publishedAt
-    }
-    
-    var contentDetails: String {
-        return content
-    }
-    
-    var imageDetails: Data? {
-        return image
-    }
-    
-    var nameDetails: String {
-        return name
-    }
-    
-    var urlDetails: String {
-        return url
-    }
-    
-    var descriptionDetails: String {
-        return descriptionLabel
-    }
-    
-    
-}
+//extension SDNewsModel: NewsDetailsDisplay {
+//    var titleDetails: String {
+//        return title
+//    }
+//    
+//    var authorDetails: String {
+//        return author
+//    }
+//    
+//    var publishedAtDetailsc: String {
+//        return publishedAt
+//    }
+//    
+//    var contentDetails: String {
+//        return content
+//    }
+//    
+//    var imageDetails: Data? {
+//        return image
+//    }
+//    
+//    var nameDetails: String {
+//        return name
+//    }
+//    
+//    var urlDetails: String {
+//        return url
+//    }
+//    
+//    var descriptionDetails: String {
+//        return descriptionLabel
+//    }
+//    
+//    
+//}

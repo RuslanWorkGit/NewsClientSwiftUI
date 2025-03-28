@@ -23,19 +23,10 @@ class SwiftDataService {
     }
     
     func addArticle(article: SDNewsModel, modelContext: ModelContext) {
-//        guard let modelContext else {
-//            print("ModelContext ADD!!!!")
-//            return
-//        }
         modelContext.insert(article)
-
     }
     
     func fetchArticle(categorys: String, modelContext: ModelContext) -> [SDNewsModel] {
-//        guard let modelContext else {
-//            print("ModelContext!!!")
-//            return []
-//        }
         
         let predicate = #Predicate<SDNewsModel> { $0.category == categorys }
         let descriptor = FetchDescriptor<SDNewsModel>(predicate: predicate, sortBy: [SortDescriptor(\.publishedAt, order: .reverse)])
@@ -64,10 +55,6 @@ class SwiftDataService {
     }
     
     func existsArticle(with url: String, modelContext: ModelContext) -> Bool {
-//        guard let modelContext else {
-//            print("ModelContext!!!")
-//            return false
-//        }
         
         let predicator = #Predicate<SDNewsModel> { $0.url == url }
         let fetchDescriptor = FetchDescriptor<SDNewsModel>(predicate: predicator)
@@ -75,6 +62,19 @@ class SwiftDataService {
         do {
             let results = try modelContext.fetch(fetchDescriptor)
             return !results.isEmpty
+        } catch {
+            print("Error find element: \(error.localizedDescription)")
+            return false
+        }
+    }
+    
+    func existsFavorietsArticle(with url: String, modelContext: ModelContext) -> Bool {
+        let predicate = #Predicate<SDNewsModel> { $0.url == url }
+        let fetchDescriptor = FetchDescriptor<SDNewsModel>(predicate: predicate)
+        
+        do {
+            let results = try modelContext.fetch(fetchDescriptor)
+            return results.first?.isFavorite ?? false
         } catch {
             print("Error find element: \(error.localizedDescription)")
             return false
@@ -96,7 +96,6 @@ class SwiftDataService {
     }
     
     func deleteAll(modelContext: ModelContext) {
-//        guard let modelContext else { return }
         
         let descriptor = FetchDescriptor<SDNewsModel>()
         

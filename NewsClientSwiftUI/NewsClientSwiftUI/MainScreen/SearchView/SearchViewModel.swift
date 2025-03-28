@@ -18,8 +18,8 @@ class SearchViewModel: ObservableObject {
         self.networkService = networkService
     }
     
-    func fetchSearch(search: String) {
-        guard let url = apiLink.bildUrl(endpoints: .everything, search: search) else {
+    func fetchSearch(search: String, searchByPublishing: Bool = false, sortByPopularity: Bool = false) {
+        guard let url = apiLink.bildUrl(endpoints: .everything, search: search, sortByPublishing: searchByPublishing, sortByPopularity: sortByPopularity) else {
             print("Wrong url!")
             return
         }
