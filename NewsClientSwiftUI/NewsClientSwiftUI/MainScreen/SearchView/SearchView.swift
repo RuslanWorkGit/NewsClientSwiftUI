@@ -18,9 +18,11 @@ struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
     @State private var searchText: String = ""
     @State private var isSerching: Bool = false
-//    @State private var sortByNewest: Bool = false
-//    @State private var sortByPopularity: Bool = false
     @State private var selectedSort: SortOption = .none
+    
+    @State private var showDataPicker: Bool = false
+    @State private var fromData: Date = Date()
+    @State private var toData: Date = Date()
     
     var body: some View {
         NavigationView {
@@ -34,11 +36,29 @@ struct SearchView: View {
                         
                         switch selectedSort {
                         case .none:
-                            viewModel.fetchSearch(search: searchText)
+                            
+                            if showDataPicker {
+                                viewModel.fetchSearch(search: searchText, from: fromData, to: fromData)
+                            } else {
+                                viewModel.fetchSearch(search: searchText)
+                            }
+                            
                         case .newest:
                             viewModel.fetchSearch(search: searchText, searchByPublishing: true)
+                            
+                            if showDataPicker {
+                                viewModel.fetchSearch(search: searchText, searchByPublishing: true, from: fromData, to: fromData)
+                            } else {
+                                viewModel.fetchSearch(search: searchText, searchByPublishing: true)
+                            }
+                            
                         case .popularity:
-                            viewModel.fetchSearch(search: searchText, sortByPopularity: true)
+                            
+                            if showDataPicker {
+                                viewModel.fetchSearch(search: searchText, sortByPopularity: true, from: fromData, to: fromData)
+                            } else {
+                                viewModel.fetchSearch(search: searchText, sortByPopularity: true)
+                            }
                         }
                     }
                 
@@ -61,7 +81,13 @@ struct SearchView: View {
                         selectedSort = newValue ? .popularity : .none
                     }))
                     
-
+                    Toggle("Choose date for news", isOn: $showDataPicker)
+                    
+                    if showDataPicker {
+                        DatePicker("From", selection: $fromData, displayedComponents: .date)
+                        DatePicker("To", selection: $toData, displayedComponents: .date)
+                    }
+                    
                 }
                 .padding()
                 

@@ -30,11 +30,14 @@ struct ApiLink {
                  category: Category? = nil,
                  search: String? = nil,
                  sortByPublishing: Bool = false,
-                 sortByPopularity: Bool = false) -> URL? {
+                 sortByPopularity: Bool = false,
+                 from: Date? = nil,
+                 to: Date? = nil) -> URL? {
         
         let fullLink = mainLink + endpoints.rawValue
         var components = URLComponents(string: fullLink)
         var queryItems = [URLQueryItem]()
+        let dateFormater = ISO8601DateFormatter()
         
         if let addCategory = category?.rawValue {
             queryItems.append(URLQueryItem(name: "category", value: addCategory))
@@ -42,6 +45,14 @@ struct ApiLink {
         
         if let addSearch = search {
             queryItems.append(URLQueryItem(name: "q", value: addSearch))
+        }
+        
+        if let fromDate = from {
+            queryItems.append(URLQueryItem(name: "from", value: dateFormater.string(from: fromDate)))
+        }
+        
+        if let toDate = to {
+            queryItems.append(URLQueryItem(name: "to", value: dateFormater.string(from: toDate)))
         }
         
         if sortByPublishing {
