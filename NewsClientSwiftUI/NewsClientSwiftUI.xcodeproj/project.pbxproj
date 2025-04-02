@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B631C7B2D85A1D100E14B49 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9B631C7A2D85A1D100E14B49 /* SDWebImageSwiftUI */; };
+		9B6CD4262D88BA6D007FD5C4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 9B6CD4252D88BA6D007FD5C4 /* Lottie */; };
 		9BF87C892D83729D00C8F16B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9BF87C882D83729D00C8F16B /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B631C7B2D85A1D100E14B49 /* SDWebImageSwiftUI in Frameworks */,
 				9BF87C892D83729D00C8F16B /* SnapKit in Frameworks */,
+				9B6CD4262D88BA6D007FD5C4 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +75,8 @@
 			name = NewsClientSwiftUI;
 			packageProductDependencies = (
 				9BF87C882D83729D00C8F16B /* SnapKit */,
+				9B631C7A2D85A1D100E14B49 /* SDWebImageSwiftUI */,
+				9B6CD4252D88BA6D007FD5C4 /* Lottie */,
 			);
 			productName = NewsClientSwiftUI;
 			productReference = 9BF87C712D83720E00C8F16B /* NewsClientSwiftUI.app */;
@@ -102,6 +108,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				9BF87C872D83729D00C8F16B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9B35786C2D85A1B800377720 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				9B887AB52D88BA2B00317E61 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9BF87C722D83720E00C8F16B /* Products */;
@@ -267,6 +275,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchNewsScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -296,6 +305,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchNewsScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -335,6 +345,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9B35786C2D85A1B800377720 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+		9B887AB52D88BA2B00317E61 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.1;
+			};
+		};
 		9BF87C872D83729D00C8F16B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -346,6 +372,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9B631C7A2D85A1D100E14B49 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B35786C2D85A1B800377720 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		9B6CD4252D88BA6D007FD5C4 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B887AB52D88BA2B00317E61 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
 		9BF87C882D83729D00C8F16B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9BF87C872D83729D00C8F16B /* XCRemoteSwiftPackageReference "SnapKit" */;
