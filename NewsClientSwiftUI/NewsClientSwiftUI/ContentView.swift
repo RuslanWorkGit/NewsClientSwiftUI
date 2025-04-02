@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment(\.modelContext) private var context
+    
     var body: some View {
         TabView {
             Tab("Home", systemImage: "house") {
-                MainView()
+                MainView(viewModel: MainViewModel(context: context))
+                
             }
             .badge(2)
             
@@ -19,14 +23,12 @@ struct ContentView: View {
                 SearchView()
             }
             
-            
             Tab("Setting", systemImage: "gear") {
-                SettingView()
+                SettingView(viewModel: SettingViewModel(context: context))
             }
             
             
         }
-        .padding()
     }
 }
 
